@@ -26,12 +26,12 @@ export default function SurfaceCanvas() {
     .map((id) => participants.find((p) => p.participant_id === id)?.name ?? id)
     .filter(Boolean);
   /* header pattern: "NASA + 7u" after come-here */
-  const headerLine = [s.title, ...names.filter((n) => n !== 'abed')].join(' + ');
+  const headerLine = [s.title, ...names.filter((n) => n !== 'abed' && n.toLowerCase() !== s.title.toLowerCase())].join(' + ');
 
   const demo = (s.state as Record<string, unknown> | undefined)?.demo as string | undefined;
 
   return (
-    <div className="flex-1 flex flex-col min-h-0 px-6 pt-4 pb-2">
+    <div className="flex-1 flex flex-col min-h-0 pl-6 pr-[300px] pt-4 pb-2">
       {/* header */}
       <div className="shrink-0 mb-3 animate-fade-in" key={s.id}>
         <div className="flex items-center gap-2">
